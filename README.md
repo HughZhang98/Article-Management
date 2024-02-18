@@ -1,4 +1,4 @@
-# element-admin
+# An easy Articles Management System (Vue+NodeJS+ElementUI+MongoDB)
 
 ## Project setup
 ```
