@@ -1,4 +1,4 @@
-# Vue2, Javascript and ElementUI Version
+# Vue2 + Javascript + ElementUI
 
 ## Project setup
 ```
