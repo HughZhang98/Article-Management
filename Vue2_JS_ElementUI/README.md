@@ -7,8 +7,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-Vue2: npm run serve
-Vue3: npm run dev
+npm run serve
 ```
 
 ### Compiles and minifies for production
