@@ -1,4 +1,5 @@
-# An easy Articles Management System         (Vue + ElementUI + Axios + Cros + NodeJS + MongoDB)  
+# This is a simple Article Management System
+(Vue + ElementUI + Axios + Cros + NodeJS + MongoDB)  
 
 ## Project setup
 ```
