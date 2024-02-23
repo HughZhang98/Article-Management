@@ -1,4 +1,4 @@
-# An easy Articles Management System (Vue2+ElementUI+Axios+NodeJS+MongoDB)
+# Vue2 and ElementUI Version
 
 ## Project setup
 ```
