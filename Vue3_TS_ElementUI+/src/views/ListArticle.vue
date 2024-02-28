@@ -14,33 +14,47 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import axios from 'axios';
 import { useRouter } from 'vue-router'
+import mockapi from '../api/api.ts'
 
 const router = useRouter()
 const articles = ref([])
 
-const edit = (id:any) => {
+const edit = (id: any) => {
   router.push(`/articles/${id}/edit`)
 }
-const remove = (id:any) => {
-  axios.delete(`http://localhost:3002/api/articles/${id}`).then(() => {
+const remove = async (id: any) => {
+  const deleteArticles = await mockapi.deleteArticles(id)
+  if (deleteArticles.status == 200) {
     ElMessage({
       message: '文章删除成功!',
       type: 'success',
     })
- 
-    axios.get(' http://localhost:3002/api/articles').then((res) => {
-      articles.value = res.data
-    })
-  })
+
+    const res = await mockapi.getArticles()
+    articles.value = res.data
+  }
+  // axios.delete(`http://localhost:3002/api/articles/${id}`).then(() => {
+  //   ElMessage({
+  //     message: '文章删除成功!',
+  //     type: 'success',
+  //   })
+
+  //   axios.get(' http://localhost:3002/api/articles').then((res) => {
+  //     articles.value = res.data
+  //   })
+  // })
+
 }
 
-onMounted(() => {
-  axios.get(' http://localhost:3002/api/articles').then((res) => {
-    console.log(res.data);
-    articles.value = res.data
-  })
+onMounted(async () => {
+  const res = await mockapi.getArticles()
+  console.log(res.data);
+  articles.value = res.data
+
+  // axios.get(' http://localhost:3002/api/articles').then((res) => {
+  //   articles.value = res.data
+  // })
 })
 </script>
 

@@ -32,7 +32,7 @@ app.delete('/api/articles/:id', async (req, res) => {
     status: true
   })
 })
-//Articles Info
+//Article Info
 app.get('/api/articles/:id', async (req, res) => {
   const article = await Article.findById(req.params.id)
   res.send(article)

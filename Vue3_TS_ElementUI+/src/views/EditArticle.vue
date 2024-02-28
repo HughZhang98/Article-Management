@@ -1,5 +1,5 @@
 <template>
-  <el-form @submit.prevent="saveArticle" :model="article" label-width="120px" style="margin-top: 3%;">
+  <el-form @submit.prevent="editArticle" :model="article" label-width="120px" style="margin-top: 3%;">
     <el-form-item label="文章标题">
       <el-input v-model="article.title" style="width: 50%;" />
     </el-form-item>
@@ -17,7 +17,7 @@
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import axios from 'axios';
+import mockapi from '../api/api.ts'
 
 const article = reactive({
   title: '',
@@ -26,28 +26,40 @@ const article = reactive({
 
 const router = useRouter()
 const id = ref(router.currentRoute.value.params.id)
-
-const saveArticle = () => {
-  axios.put(`http://localhost:3002/api/articles/${id.value}`, article).then(() => {
+const editArticle = async () => {
+  // axios.put(`http://localhost:3002/api/articles/${id.value}`, article).then(() => {
+  //   ElMessage({
+  //     message: '文章编辑成功!',
+  //     type: 'success',
+  //   })
+  //   router.push('/articles/index');
+  // })
+  const res = await mockapi.updateArticles(id.value, article)
+  if (res.status === 200) {
     ElMessage({
       message: '文章编辑成功!',
       type: 'success',
     })
     router.push('/articles/index');
-  })
+  }
 }
 
 const cancelBtn = () => {
   router.push('/articles/index');
 }
 
-onMounted(() => {
-  axios.get(`http://localhost:3002/api/articles/${id.value}`).then((res) => {
+onMounted(async () => {
+  const res = await mockapi.getArticleInfo(id.value)
+  if (res.status === 200) {
     article.body = res.data.body
     article.title = res.data.title
-  })
+  }
+  // axios.get(`http://localhost:3002/api/articles/${id.value}`).then((res) => {
+  //   article.body = res.data.body
+  //   article.title = res.data.title
+  // })
+
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

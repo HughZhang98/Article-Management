@@ -17,7 +17,7 @@
 import { reactive } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import axios from 'axios';
+import mockapi from '../api/api.ts'
 
 const article = reactive({
   title: '',
@@ -26,14 +26,22 @@ const article = reactive({
 
 const router = useRouter()
 
-const saveArticle = () => {
-  axios.post('http://localhost:3002/api/articles', article).then(() => {
+const saveArticle = async () => {
+  const res = await mockapi.createArticles(article)
+  if (res.status === 200) {
     ElMessage({
       message: '文章创建成功!',
       type: 'success',
     })
     router.push('/articles/index');
-  })
+  }
+  // axios.post('http://localhost:3002/api/articles', article).then(() => {
+  //   ElMessage({
+  //     message: '文章创建成功!',
+  //     type: 'success',
+  //   })
+  //   router.push('/articles/index');
+  // })
 }
 
 const cancelBtn = () => {
@@ -41,5 +49,4 @@ const cancelBtn = () => {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
