@@ -43,4 +43,21 @@ app.put('/api/articles/:id', async (req, res) => {
   res.send(article)
 })
 
+//Login
+mongoose.connect('mongodb://127.0.0.1:27017/article-management')
+const User = mongoose.model('User', new mongoose.Schema({
+  userName: { type: String },
+  password: { type: String },
+}))
+//Log in
+app.post('/api/login', async (req, res) => {
+  const user = await User.find()
+  res.send(user)
+})
+//Sign up
+app.post('/api/signUp', async (req, res) => {
+  const user = await User.create(req.body)
+  res.send(user)
+})
+
 app.listen(port, () => console.log(`http://localhost:${port}`))

@@ -4,7 +4,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'home',
-        redirect: '/articles/index',       
+        redirect: '/login',       
     },
     {
       path: '/articles/index',
@@ -21,6 +21,16 @@ const routes: Array<RouteRecordRaw> = [
       name: 'edit-article',
       component: () => import('../views/EditArticle.vue') 
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/Login.vue')
+    },
+    {
+      path: '/signUp',
+      name: 'signUp',
+      component: () => import('../views/SignUp.vue')
+    }
 ]
 
 const router = createRouter({

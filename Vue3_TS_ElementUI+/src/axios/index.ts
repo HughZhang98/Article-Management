@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { ElMessage } from "element-plus";
 const http = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL, // 设置基础URL
   timeout: 5000, // 设置超时时间
@@ -11,6 +11,7 @@ http.interceptors.request.use((config) => {
   return config
 }, (error) => {
   // 对请求错误做些什么
+  ElMessage.error("网络异常");
   return Promise.reject(error)
 })
 
@@ -22,6 +23,7 @@ http.interceptors.response.use((response) => {
 }, (error) => {
   // 对响应错误做点什么
   //超出 2xx 范围内的状态码都会触发该函数
+  ElMessage.error("请求失败");
   return Promise.reject(error)
 })
 

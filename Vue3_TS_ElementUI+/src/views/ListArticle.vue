@@ -48,10 +48,11 @@ const remove = async (id: any) => {
 }
 
 onMounted(async () => {
+  if(!localStorage.getItem('userName'))  router.push('/login');
+
   const res = await mockapi.getArticles()
   console.log(res.data);
   articles.value = res.data
-
   // axios.get(' http://localhost:3002/api/articles').then((res) => {
   //   articles.value = res.data
   // })

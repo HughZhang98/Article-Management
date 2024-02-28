@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import mockapi from '../api/api.ts'
@@ -47,6 +47,9 @@ const saveArticle = async () => {
 const cancelBtn = () => {
   router.push('/articles/index');
 }
+onMounted(() => {
+  if(!localStorage.getItem('userName'))  router.push('/login');
+})
 </script>
 
 <style scoped></style>

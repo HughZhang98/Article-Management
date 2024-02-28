@@ -18,15 +18,14 @@
       <el-header style="text-align: right; font-size: 12px">
         <div class="toolbar">
           <el-dropdown>
-            <el-icon style="margin-right: 8px; margin-top: 1px"><setting /></el-icon>
+            <el-icon style="margin-right: 8px; margin-top: 1px" v-show="settingShow"><setting /></el-icon>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item>登出</el-dropdown-item>
-                <el-dropdown-item>删除全部</el-dropdown-item>
+                <el-dropdown-item @click="loginOut()">登出</el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-          <span>Hugh</span>
+          <el-link @click="toLogin()">{{userName}}</el-link>
         </div>
       </el-header>
 
@@ -39,6 +38,34 @@
 
 <script lang="ts" setup>
 import { Reading, Setting } from '@element-plus/icons-vue'
+import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
+
+const router = useRouter()
+const userName = ref('请登录')
+const settingShow = ref(false)
+
+const toLogin = () => {
+  if(!localStorage.getItem('userName')) {
+    router.push('/login');
+  }
+  
+}
+const loginOut = () => {
+  localStorage.removeItem('userName');
+  router.push('/login');
+  userName.value = '请登录'
+  settingShow.value = false
+}
+
+onMounted(() => {
+  if(localStorage.getItem('userName')) {
+    userName.value = localStorage.getItem('userName')?.toString()!;
+    settingShow.value = true;    
+  } else {
+    router.push('/login');
+  }
+})
 </script>
 
 <style scoped>

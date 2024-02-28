@@ -38,5 +38,21 @@ export default {
       method: 'put',
       data: data
     })
+  },
+  //Log In
+  login(data: any) {
+    return http({
+      url: `http://localhost:3002/api/login`,
+      method: 'post',
+      data: data
+    })
+  },
+   //Sign up
+   signUp(data: any) {
+    return http({
+      url: `http://localhost:3002/api/signUp`,
+      method: 'post',
+      data: data
+    })
   }
 }
