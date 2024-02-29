@@ -49,8 +49,8 @@ const cancelBtn = () => {
 }
 
 onMounted(async () => {
-  if(!localStorage.getItem('userName'))  router.push('/login');
-  
+  if (!localStorage.getItem('userName')) router.push('/login');
+
   const res = await mockapi.getArticleInfo(id.value)
   if (res.status === 200) {
     article.body = res.data.body
@@ -65,4 +65,3 @@ onMounted(async () => {
 </script>
 
 <style scoped></style>
-../apis/api.ts

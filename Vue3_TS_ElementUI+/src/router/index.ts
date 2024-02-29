@@ -35,7 +35,19 @@ const routes: Array<RouteRecordRaw> = [
       name: 'signUp',
       component: () => import('../views/SignUp.vue'),
       meta: { title: "Sign Up" } 
-    }
+    },
+    {
+      path: '/admins',
+      name: 'list-admin',
+      component: () => import('../views/AdminList.vue'),
+      meta: { title: "Admin List" } 
+    },
+    {
+      path: '/admins/:id/edit',
+      name: 'edit-admins',
+      component: () => import('../views/EditAdmin.vue'),
+      meta: { title: "Admin Edit" }  
+    },
 ]
 
 const router = createRouter({

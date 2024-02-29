@@ -17,7 +17,7 @@ const Article = mongoose.model('Article', new mongoose.Schema({
 app.get('/', async (req, res) => res.send('Index'))
 //Create Articles
 app.post('/api/articles', async (req, res) => {
- const article = await Article.create(req.body)
+ const article = await Article.create(req.body) 
  res.send(article)
 })
 //Show Articles list
@@ -59,5 +59,27 @@ app.post('/api/signUp', async (req, res) => {
   const user = await User.create(req.body)
   res.send(user)
 })
+//Get Admin List
+app.get('/api/admins', async (req, res) => {
+  const user = await User.find()
+  res.send(user)
+})
+//Delete Admins
+app.delete('/api/admins/:id', async (req, res) => {
+  await User.findByIdAndDelete(req.params.id)
+  res.send({
+    status: true
+  })
+})
+//Admin Info
+app.get('/api/admins/:id', async (req, res) => {
+  const user = await User.findById(req.params.id)
+  res.send(user)
+})
+//Update Admin
+app.put('/api/admins/:id', async (req, res) => {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body)
+  res.send(user)
+})  
 
 app.listen(port, () => console.log(`http://localhost:${port}`))

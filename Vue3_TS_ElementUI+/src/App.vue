@@ -21,6 +21,7 @@
             <el-icon style="margin-right: 8px; margin-top: 1px" v-show="settingShow"><setting /></el-icon>
             <template #dropdown>
               <el-dropdown-menu>
+                <el-dropdown-item @click="toAdminList()">管理员列表</el-dropdown-item>
                 <el-dropdown-item @click="loginOut()">登出</el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -30,7 +31,7 @@
       </el-header>
 
       <el-main>
-        <router-view :key="$route.fullPath"></router-view>
+        <router-view></router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -49,7 +50,9 @@ const toLogin = () => {
   if(!localStorage.getItem('userName')) {
     router.push('/login');
   }
-  
+}
+const toAdminList = () => {
+  router.push('/admins');
 }
 const loginOut = () => {
   localStorage.removeItem('userName');

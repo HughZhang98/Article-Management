@@ -35,7 +35,7 @@ const signUpFormFunc = () => {
             })
             setTimeout(() => {
               router.push('/login');
-            },2000)
+            }, 2000)
           }
         }
 
@@ -48,17 +48,15 @@ const signUpFormFunc = () => {
                 type: 'success',
               })
               router.push('/articles/index');
+              setTimeout(() => {
+                location.reload();
+              }, 0);
             }
           })
         }
       }
 
     })
-
-
-
-
-
   } else {
     ElMessage.error('帐号或密码不能为空！')
   }
@@ -72,4 +70,3 @@ button {
   width: 30%;
 }
 </style>
-../apis/api.ts

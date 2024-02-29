@@ -48,9 +48,8 @@ const cancelBtn = () => {
   router.push('/articles/index');
 }
 onMounted(() => {
-  if(!localStorage.getItem('userName'))  router.push('/login');
+  if (!localStorage.getItem('userName')) router.push('/login');
 })
 </script>
 
 <style scoped></style>
-../apis/api.ts

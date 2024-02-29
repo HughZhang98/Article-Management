@@ -54,5 +54,35 @@ export default {
       method: 'post',
       data: data
     })
+  },
+  //Admin List
+  getAdminList() {
+    return http({
+      url: `/api/admins`,
+      method: 'get'
+    })
+  },
+   //Update Admin
+   updateAdmin(id: any, data: any) {
+    return http({
+      url: `/api/admins/${id}`,
+      method: 'put',
+      data: data
+    })
+  },
+  //Admin Info
+  getAdminInfo(data: any) {
+    return http({
+      url: `/api/admins/${data}`,
+      method: "get"
+    })
+  },
+   //Delete Admin
+   deleteAdmin(data: any) {
+    return http({
+      url: `/api/admins/${data}`,
+      method: "delete",
+      data: data
+    }) 
   }
 }

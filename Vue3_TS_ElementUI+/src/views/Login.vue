@@ -3,12 +3,9 @@
   <el-text type="primary" size="large" tag="b">Log in</el-text>
   <el-form label-width="100px" :model="loginForm" style="max-width: 460px; margin: 0 auto; ">
     <el-input v-model="loginForm.userName" placeholder="User name" style="margin: 10px" clearable />
-    <el-input v-model="loginForm.password" type="password" placeholder="Password" style="margin: 10px" clearable
-      show-password />
-
+    <el-input v-model="loginForm.password" type="password" placeholder="Password" style="margin: 10px" clearable show-password />
     <el-button type="primary" @click.prevent="loginFunc()" style="margin: 10px" round>Login</el-button>
     <el-button type="primary" @click.prevent="submitForm()" style="margin: 10px" round>SignUp</el-button>
-
   </el-form>
 </template>
 
@@ -57,17 +54,14 @@ const loginFunc = () => {
           })
         }
       }
-
     })
   } else {
     ElMessage.error('帐号或密码不能为空！')
   }
-
 }
+
 onMounted(() => {
-  if (localStorage.getItem('userName')) {
-    router.push('/articles/index');
-  }
+  if (localStorage.getItem('userName')) { router.push('/articles/index'); }
 })
 </script>
 
@@ -77,4 +71,3 @@ button {
   width: 30%;
 }
 </style>
-../apis/api.ts
