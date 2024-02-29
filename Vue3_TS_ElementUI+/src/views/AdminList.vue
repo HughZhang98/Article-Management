@@ -1,6 +1,7 @@
 <template>
   <el-text type="primary" size="large" tag="b" style="margin: 3% 0; display: block;">Admin List</el-text>
   <el-table :data="adminList">
+    <el-table-column type="index" label="#" width="50" />
     <el-table-column prop="_id" label="ID" width="300" />
     <el-table-column prop="userName" label="姓名" />
     <el-table-column fixed="right" label="操作" width="120">

@@ -1,11 +1,14 @@
 <template>
   <el-table :data="articles">
+    <el-table-column type="index" label="#" width="50" />
     <el-table-column prop="title" label="标题" width="140" />
     <el-table-column prop="body" label="内容" />
-    <el-table-column fixed="right" label="操作" width="120">
+    <el-table-column fixed="right" label="操作" width="150">
       <template #default='scope'>
-        <el-button link type="primary" size="small" @click="edit(scope.row._id)">编辑</el-button>
-        <el-button link type="primary" size="small" @click="remove(scope.row._id)">删除</el-button>
+        <el-button size="small" @click="edit(scope.row._id)">编辑</el-button>
+        <el-button type="danger" size="small" @click="remove(scope.row._id)">删除</el-button>
+        <!-- <el-button size="small" @click="handleEdit(scope.$index, scope.row)" >Edit</el-button>
+        <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)" >Delete</el-button> -->
       </template>
     </el-table-column>
   </el-table>
