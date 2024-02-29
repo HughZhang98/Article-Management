@@ -1,7 +1,8 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
 const http = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL, // 设置基础URL
+  // baseURL: import.meta.env.VITE_API_BASE_URL, // 设置基础URL
+  baseURL: `http://localhost:3002`,
   timeout: 5000, // 设置超时时间
 })
 

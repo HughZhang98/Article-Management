@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
 import { reactive, onMounted } from 'vue'
-import mockapi from '../api/api.ts'
+import mockapi from '../apis/api.ts'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 
@@ -31,8 +31,10 @@ const loginFunc = () => {
   if (loginForm.userName != '' && loginForm.password != '') {
     mockapi.login(loginForm).then(res => {
       if (res.status === 200) {
+        let findUser = false
         for (let i = 0; i < res.data.length; i++) {
           if (res.data[i].userName === loginForm.userName) {
+            findUser = true
             if (res.data[i].password === loginForm.password) {
               localStorage.setItem('userName', loginForm.userName)
               ElMessage({
@@ -40,20 +42,21 @@ const loginFunc = () => {
                 type: 'success',
               })
               router.push('/articles/index');
-              // location.reload();
+              location.reload();
               break;
             } else {
               ElMessage.error('密码错误')
               break;
             }
           }
-
+        }
+        if (!findUser) {
+          ElMessage({
+            message: '用户不存在!',
+            type: 'warning',
+          })
         }
       }
-      ElMessage({
-        message: '用户不存在!',
-        type: 'warning',
-      })
 
     })
   } else {
@@ -74,3 +77,4 @@ button {
   width: 30%;
 }
 </style>
+../apis/api.ts

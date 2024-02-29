@@ -4,7 +4,7 @@ export default {
   //Create Articles
   createArticles(data: any) {
     return http({
-      url: `http://localhost:3002/api/articles`,
+      url: `/api/articles`,
       method: 'post',
       data: data
     })
@@ -12,14 +12,14 @@ export default {
   //Show Articles list
   getArticles() {
     return http({
-      url: `http://localhost:3002/api/articles`,
+      url: `/api/articles`,
       method: "get"
     })
   },
   //Delete Articles
   deleteArticles(data: any) {
     return http({
-      url: `http://localhost:3002/api/articles/${data}`,
+      url: `/api/articles/${data}`,
       method: "delete",
       data: data
     })
@@ -27,14 +27,14 @@ export default {
   //Article Info
   getArticleInfo(data: any) {
     return http({
-      url: `http://localhost:3002/api/articles/${data}`,
+      url: `/api/articles/${data}`,
       method: "get"
     })
   },
   //Update Articles
   updateArticles(id: any, data: any) {
     return http({
-      url: `http://localhost:3002/api/articles/${id}`,
+      url: `/api/articles/${id}`,
       method: 'put',
       data: data
     })
@@ -42,15 +42,15 @@ export default {
   //Log In
   login(data: any) {
     return http({
-      url: `http://localhost:3002/api/login`,
+      url: `/api/login`,
       method: 'post',
       data: data
     })
   },
-   //Sign up
-   signUp(data: any) {
+  //Sign up
+  signUp(data: any) {
     return http({
-      url: `http://localhost:3002/api/signUp`,
+      url: `/api/signUp`,
       method: 'post',
       data: data
     })

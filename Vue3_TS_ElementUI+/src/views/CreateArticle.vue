@@ -17,7 +17,7 @@
 import { reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import mockapi from '../api/api.ts'
+import mockapi from '../apis/api.ts'
 
 const article = reactive({
   title: '',
@@ -53,3 +53,4 @@ onMounted(() => {
 </script>
 
 <style scoped></style>
+../apis/api.ts

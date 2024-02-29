@@ -15,7 +15,7 @@
 import { ref, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import mockapi from '../api/api.ts'
+import mockapi from '../apis/api.ts'
 
 const router = useRouter()
 const articles = ref([])
@@ -59,4 +59,4 @@ onMounted(async () => {
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped></style>../apis/api.ts

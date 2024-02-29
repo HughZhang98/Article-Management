@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import mockapi from '../api/api.ts'
+import mockapi from '../apis/api.ts'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 
@@ -47,3 +47,4 @@ button {
   width: 30%;
 }
 </style>
+../apis/api.ts
