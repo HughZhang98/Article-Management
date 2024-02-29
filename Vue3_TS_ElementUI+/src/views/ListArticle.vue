@@ -7,8 +7,6 @@
       <template #default='scope'>
         <el-button size="small" @click="edit(scope.row._id)">编辑</el-button>
         <el-button type="danger" size="small" @click="remove(scope.row._id)">删除</el-button>
-        <!-- <el-button size="small" @click="handleEdit(scope.$index, scope.row)" >Edit</el-button>
-        <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)" >Delete</el-button> -->
       </template>
     </el-table-column>
   </el-table>
