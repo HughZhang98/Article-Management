@@ -23,17 +23,42 @@ const signUpForm = reactive({
 
 const signUpFormFunc = () => {
   if (signUpForm.userName != '' && signUpForm.password != '') {
-    mockapi.signUp(signUpForm).then(res => {
+    mockapi.login(signUpForm).then(res => {
       if (res.status === 200) {
-        console.log(res);
-        localStorage.setItem('userName', signUpForm.userName)
-        ElMessage({
-          message: `您好 ${signUpForm.userName} !`,
-          type: 'success',
-        })
-        router.push('/articles/index');
+        let findUser = false
+        for (let i = 0; i < res.data.length; i++) {
+          if (res.data[i].userName === signUpForm.userName) {
+            findUser = true
+            ElMessage({
+              message: '用户已经存在，请直接登录！',
+              type: 'warning',
+            })
+            setTimeout(() => {
+              router.push('/login');
+            },2000)
+          }
+        }
+
+        if (!findUser) {
+          mockapi.signUp(signUpForm).then(res => {
+            if (res.status === 200) {
+              localStorage.setItem('userName', signUpForm.userName)
+              ElMessage({
+                message: `您好 ${signUpForm.userName} !`,
+                type: 'success',
+              })
+              router.push('/articles/index');
+            }
+          })
+        }
       }
+
     })
+
+
+
+
+
   } else {
     ElMessage.error('帐号或密码不能为空！')
   }
