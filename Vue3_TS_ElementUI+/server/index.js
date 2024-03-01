@@ -67,8 +67,8 @@ app.get('/api/admins', async (req, res) => {
 //Delete Admins
 app.delete('/api/admins/:id', async (req, res) => {
   await User.findByIdAndDelete(req.params.id)
-  res.send({
-    status: true
+  res.send({ 
+    status: true 
   })
 })
 //Admin Info

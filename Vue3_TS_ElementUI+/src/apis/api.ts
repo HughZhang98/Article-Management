@@ -65,7 +65,7 @@ export default {
    //Update Admin
    updateAdmin(id: any, data: any) {
     return http({
-      url: `/api/admins/${id}`,
+      url: `/api/admins/${id}`, 
       method: 'put',
       data: data
     })

@@ -48,6 +48,12 @@ const routes: Array<RouteRecordRaw> = [
       component: () => import('../views/EditAdmin.vue'),
       meta: { title: "Admin Edit" }  
     },
+    // {
+    //   path: '/resume',
+    //   name: 'resume',
+    //   component: () => import('../views/Resume.vue'),
+    //   meta: { title: "Resume" }
+    // }
 ]
 
 const router = createRouter({
