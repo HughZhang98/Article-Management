@@ -39,7 +39,7 @@ const loginFunc = () => {
                 type: 'success',
               })
               router.push('/articles/index');
-              location.reload();
+              // location.reload();
               break;
             } else {
               ElMessage.error('密码错误')

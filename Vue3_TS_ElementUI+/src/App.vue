@@ -45,7 +45,7 @@
 <script lang="ts" setup>
 import { Reading, Setting, Files } from '@element-plus/icons-vue'
 import { useRouter } from 'vue-router'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 const router = useRouter()
 const userName = ref('请登录')
@@ -73,9 +73,16 @@ onMounted(() => {
   } else {
     router.push('/login');
   }
-  
 })
 
+watch(() => router.currentRoute.value.path, (newVal, oldVal) => {
+  if(localStorage.getItem('userName')) {
+    userName.value = localStorage.getItem('userName')?.toString()!;
+    settingShow.value = true;    
+  } else {
+    router.push('/login');
+  }
+})
 </script>
 
 <style scoped>

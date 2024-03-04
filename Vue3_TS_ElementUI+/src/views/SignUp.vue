@@ -48,9 +48,9 @@ const signUpFormFunc = () => {
                 type: 'success',
               })
               router.push('/articles/index');
-              setTimeout(() => {
-                location.reload();
-              }, 0);
+              // setTimeout(() => {
+              //   location.reload();
+              // }, 0);
             }
           })
         }
